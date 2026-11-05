@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eef2f7;
+            font-family: Arial, sans-serif;
+        }
+
+        .profile-card {
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px #00000015;
+        }
+
+        .header {
+            background: #2447a5;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        .avatar {
+            background: white;
+            color: #2447a5;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            line-height: 65px;
+            font-size: 30px;
+            margin: auto;
+        }
+
+        .header h1 {
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .item {
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .label {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+
+        .value {
+            color: #222;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #f8fafc;
+            color: #777;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="profile-card">
+
+        <div class="header">
+            <div class="avatar">S</div>
+            <h1>Student Profile</h1>
+            <p>{{ major }}</p>
+        </div>
+
+        <div class="content">
+
+            <div class="item">
+                <div class="label">Full Name</div>
+                <div class="value">
+                    {{ first_name|capfirst|add:last_name }}
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="label">Student ID</div>
+                <div class="value">
+                    {{ student_id|stringformat:"s" }}
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="label">Address</div>
+                <div class="value">
+                    {{ address|upper }}
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="label">Email Address</div>
+                <div class="value">
+                    {{ email|default:"Not Provided" }}
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="label">Date of Birth</div>
+                <div class="value">
+                    {{ date_of_birth|date:"F d, Y" }}
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="label">Time Since Birth</div>
+                <div class="value">
+                    {{ date_of_birth|timesince }} ago
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="label">University</div>
+                <div class="value">
+                    {{ university }}
+                </div>
+            </div>
+
+        </div>
+
+        
+    </div>
+
+</body>
+</html>

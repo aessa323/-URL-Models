@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #edf2f8;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .card {
+            background: white;
+            max-width: 680px;
+            width: 100%;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 12px 35px #152b451c;
+        }
+        .header {
+            background: #193456;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 14px;
+        }
+        .photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+        }
+        .header h1 { margin: 15px 0 6px; }
+        .header p { margin: 0; color: #d8e4f5; }
+        .details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .field {
+            background: #f1f5fa;
+            padding: 16px;
+            border-radius: 10px;
+            overflow-wrap: anywhere;
+        }
+        .label {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .value {
+            color: #193456;
+            font-weight: bold;
+        }
+        @media (max-width: 500px) {
+            .details { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        {% if student %}
+        <div class="header">
+            {% if student.photo %}
+                <img class="photo"
+                     src="{{ student.photo.url }}"
+                     alt="Student Photo">
+            {% endif %}
+            <h1>{{ student.full_name }}</h1>
+            <p>Student Profile</p>
+        </div>
+
+        <div class="details">
+            <div class="field">
+                <div class="label">Full Name</div>
+                <div class="value">{{ student.full_name }}</div>
+            </div>
+            <div class="field">
+                <div class="label">University ID</div>
+                <div class="value">{{ student.university_id }}</div>
+            </div>
+            <div class="field">
+                <div class="label">Age</div>
+                <div class="value">{{ student.age }}</div>
+            </div>
+            <div class="field">
+                <div class="label">Date of Birth</div>
+                <div class="value">{{ student.date_of_birth }}</div>
+            </div>
+            <div class="field">
+                <div class="label">Address</div>
+                <div class="value">{{ student.address }}</div>
+            </div>
+            <div class="field">
+                <div class="label">Salary</div>
+                <div class="value">{{ student.salary }}</div>
+            </div>
+        </div>
+        {% else %}
+            <h2>No student data available</h2>
+            <p>Please add a student from Django Admin.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
